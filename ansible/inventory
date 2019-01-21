@@ -1,0 +1,18 @@
+[patroni1]
+patroni1 ansible_host=172.16.137.32 etcd_ip=172.16.137.32
+
+[patroni2]
+patroni2 ansible_host=172.16.137.33 etcd_ip=172.16.137.33
+
+[patroni3]
+patroni3 ansible_host=172.16.137.34 etcd_ip=172.16.137.34
+
+[etcd:children]
+patroni1
+patroni2
+patroni3
+
+[patroni:children]
+patroni1
+patroni2
+patroni3

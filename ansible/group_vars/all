@@ -1,0 +1,3 @@
+use_distro_packaging: no
+etcd_name: "{{ ansible_hostname }}"
+etcd_iface: eth1

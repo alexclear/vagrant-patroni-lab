@@ -1,0 +1,6 @@
+[submodule "ansible/roles/etcd"]
+	path = ansible/roles/etcd
+	url = https://github.com/kofonfor/ansible-role-etcd.git
+[submodule "ansible/roles/patroni"]
+	path = ansible/roles/patroni
+	url = https://github.com/kofonfor/ansible-role-patroni.git
