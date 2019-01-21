@@ -3,7 +3,7 @@
   roles:
   - role: etcd
 
-#- hosts: patroni
-#  become: yes
-#  roles:
-#  - role: patroni
+- hosts: patroni
+  become: yes
+  roles:
+  - role: patroni
