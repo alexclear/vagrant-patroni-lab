@@ -4,3 +4,6 @@
 [submodule "ansible/roles/patroni"]
 	path = ansible/roles/patroni
 	url = https://github.com/kofonfor/ansible-role-patroni.git
+[submodule "ansible/roles/postgresql"]
+	path = ansible/roles/postgresql
+	url = https://github.com/kofonfor/ansible-role-postgresql.git
