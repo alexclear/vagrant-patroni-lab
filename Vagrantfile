@@ -7,10 +7,6 @@ $PATRONI3_IP = "172.16.137.34"
 
 ANSIBLE_RAW_SSH_ARGS = []
 
-ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni1/virtualbox/private_key "
-ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni2/virtualbox/private_key "
-ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni3/virtualbox/private_key "
-
 Vagrant.configure("2") do |config|
   config.vm.define "patroni1" do |patroni1|
     patroni1.vm.box = "debian/stretch64"
@@ -24,6 +20,15 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 4096]
       v.customize ["modifyvm", :id, "--cableconnected1", "on"]
       v.customize ["modifyvm", :id, "--cableconnected2", "on"]
+    end
+
+    patroni1.vm.provider :libvirt do |v, override|
+      v.cpu_mode = 'custom'
+      v.cpu_model = 'kvm64'
+      v.volume_cache = 'writeback'
+      v.disk_bus = 'virtio'
+      v.cpus = 2
+      v.memory = 4096
     end
 
     patroni1.vm.provision "shell", inline: "apt-get install -y python"
@@ -42,6 +47,15 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--cableconnected2", "on"]
     end
 
+    patroni2.vm.provider :libvirt do |v, override|
+      v.cpu_mode = 'custom'
+      v.cpu_model = 'kvm64'
+      v.volume_cache = 'writeback'
+      v.disk_bus = 'virtio'
+      v.cpus = 2
+      v.memory = 4096
+    end
+
     patroni2.vm.provision "shell", inline: "apt-get install -y python"
   end
 
@@ -51,11 +65,26 @@ Vagrant.configure("2") do |config|
     patroni3.vm.network "private_network", ip: $PATRONI3_IP
 
     patroni3.vm.provider :virtualbox do |v, override|
+      ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni1/virtualbox/private_key "
+      ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni2/virtualbox/private_key "
+      ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni3/virtualbox/private_key "
       v.gui = false
       v.customize ["modifyvm", :id, "--cpus", 2]
       v.customize ["modifyvm", :id, "--memory", 4096]
       v.customize ["modifyvm", :id, "--cableconnected1", "on"]
       v.customize ["modifyvm", :id, "--cableconnected2", "on"]
+    end
+
+    patroni3.vm.provider :libvirt do |v, override|
+      ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni1/libvirt/private_key "
+      ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni2/libvirt/private_key "
+      ANSIBLE_RAW_SSH_ARGS << " -o IdentityFile=./.vagrant/machines/patroni3/libvirt/private_key "
+      v.cpu_mode = 'custom'
+      v.cpu_model = 'kvm64'
+      v.volume_cache = 'writeback'
+      v.disk_bus = 'virtio'
+      v.cpus = 2
+      v.memory = 4096
     end
 
     patroni3.vm.provision "shell", inline: "apt-get install -y python"
