@@ -1,6 +1,6 @@
 use_distro_packaging: no
 etcd_name: "{{ ansible_hostname }}"
-etcd_iface: eth1
+etcd_iface: ens6
 patroni_scope: test
 patroni_node_name: "{{ ansible_hostname }}"
 patroni_rest_password: Zaifua7aYiethikootie
@@ -8,5 +8,5 @@ patroni_group_name: patroni
 patroni_admin_password: tie3eingoh3Aechaixoh
 patroni_replicator_password: Rochae0iesahn1eiz8ph
 patroni_postgres_password: MaeTieghujoow1ohReeb
-patroni_pg_default_service: "postgresql@10-main"
-patroni_pg_path: "/usr/lib/postgresql/10/bin"
+patroni_pg_default_service: "postgresql@11-main"
+patroni_pg_path: "/usr/lib/postgresql/11/bin"
