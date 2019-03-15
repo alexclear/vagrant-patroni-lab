@@ -8,5 +8,15 @@ patroni_group_name: patroni
 patroni_admin_password: tie3eingoh3Aechaixoh
 patroni_replicator_password: Rochae0iesahn1eiz8ph
 patroni_postgres_password: MaeTieghujoow1ohReeb
-patroni_pg_default_service: "postgresql@11-main"
-patroni_pg_path: "/usr/lib/postgresql/11/bin"
+patroni_pg_default_service: "postgresql@9.6-main"
+patroni_pg_path: "/usr/lib/postgresql/9.6/bin"
+postgres_version: 9.6
+pghoard_backup_sites:
+  - host: 127.0.0.1
+    port: 5432
+    user: replicator
+    password: "{{ patroni_replicator_password }}"
+    pghoard_pg_data_directory: /var/lib/pgsql/data/patroni1
+    object_storage:
+      storage_type: local
+      directory: /var/lib/postgresql/backups

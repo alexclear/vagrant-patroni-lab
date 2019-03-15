@@ -7,3 +7,6 @@
 [submodule "ansible/roles/postgresql"]
 	path = ansible/roles/postgresql
 	url = https://github.com/kofonfor/ansible-role-postgresql.git
+[submodule "ansible/roles/pghoard"]
+	path = ansible/roles/pghoard
+	url = https://github.com/kofonfor/ansible-role-pghoard.git
