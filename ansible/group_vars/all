@@ -11,6 +11,9 @@ patroni_postgres_password: MaeTieghujoow1ohReeb
 patroni_pg_default_service: "postgresql@9.6-main"
 patroni_pg_path: "/usr/lib/postgresql/9.6/bin"
 postgres_version: 9.6
+patroni_custom_conf: /var/lib/pgsql/postgresql_custom.conf
+patroni_postgresql_custom_options:
+  shared_preload_libraries: "'pg_stat_statements'"
 pghoard_backup_sites:
   - host: 127.0.0.1
     port: 5432
