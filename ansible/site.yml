@@ -12,4 +12,5 @@
 - hosts: patroni
   become: yes
   roles:
+  - role: docker-io
   - role: patroni
