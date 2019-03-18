@@ -19,3 +19,6 @@
 [submodule "ansible/roles/postgresql-exporter-container"]
 	path = ansible/roles/postgresql-exporter-container
 	url = https://github.com/kofonfor/ansible-role-postgresql-exporter-container.git
+[submodule "ansible/roles/haproxy"]
+	path = ansible/roles/haproxy
+	url = https://github.com/kofonfor/ansible-role-haproxy.git
