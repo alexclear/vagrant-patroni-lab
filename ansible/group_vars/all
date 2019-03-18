@@ -23,3 +23,6 @@ pghoard_backup_sites:
     object_storage:
       storage_type: local
       directory: /var/lib/postgresql/backups
+postgres_exporter_postgres_user: "postgres_exporter"
+postgres_exporter_postgres_host: "{{ hostvars[inventory_hostname][('ansible_ens6')]['ipv4']['address'] }}"
+postgres_exporter_postgres_port: 5432
