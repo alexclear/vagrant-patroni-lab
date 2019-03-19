@@ -1,0 +1,5 @@
+- name: put a DDL script
+  template: src=postgres_exporter.sql dest=/root/postgres_exporter.sql
+
+- name: run the DDL script
+  command: psql "host=127.0.0.1 port={{ haproxy_patroni_frontend_port }} user=postgres dbname=postgres sslmode=disable password={{ patroni_postgres_password }}" -f /root/postgres_exporter.sql

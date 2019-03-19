@@ -26,3 +26,5 @@ pghoard_backup_sites:
 postgres_exporter_postgres_user: "postgres_exporter"
 postgres_exporter_postgres_host: "{{ hostvars[inventory_hostname][('ansible_ens6')]['ipv4']['address'] }}"
 postgres_exporter_postgres_port: 5432
+postgres_exporter_postgres_password: ohw2ej6phooThei7ahng
+haproxy_patroni_frontend_port: 5433
