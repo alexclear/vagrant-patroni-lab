@@ -1,5 +1,12 @@
 - name: put a DDL script
   template: src=postgres_exporter.sql dest=/root/postgres_exporter.sql
 
+- name: check if objects already exist
+  shell: psql "host=127.0.0.1 port=5433 user=postgres dbname=postgres sslmode=disable password=MaeTieghujoow1ohReeb" -tAc "SELECT 1 FROM pg_roles WHERE rolname='postgres_exporter'" | grep -q 1
+  register: result
+  changed_when: false
+  ignore_errors: true
+
 - name: run the DDL script
   command: psql "host=127.0.0.1 port={{ haproxy_patroni_frontend_port }} user=postgres dbname=postgres sslmode=disable password={{ patroni_postgres_password }}" -f /root/postgres_exporter.sql
+  when: result.rc != 0
