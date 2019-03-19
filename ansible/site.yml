@@ -15,8 +15,4 @@
   - role: docker-io
   - role: patroni
   - role: haproxy
-
-- hosts: patroni
-  become: yes
-  roles:
   - role: postgresql-exporter-container
