@@ -9,8 +9,8 @@ patroni_admin_password: tie3eingoh3Aechaixoh
 patroni_replicator_password: Rochae0iesahn1eiz8ph
 patroni_postgres_password: MaeTieghujoow1ohReeb
 patroni_pg_default_service: "postgresql@9.6-main"
-patroni_pg_path: "/usr/lib/postgresql/9.6/bin"
-postgres_version: 9.6
+patroni_pg_path: "/usr/lib/postgresql/11/bin"
+postgres_version: 11
 patroni_custom_conf: /var/lib/pgsql/postgresql_custom.conf
 patroni_postgresql_custom_options:
   shared_preload_libraries: "'pg_stat_statements'"
